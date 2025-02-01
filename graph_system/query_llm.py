@@ -1,11 +1,10 @@
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate 
 
 def get_response(query,context,llm):
-    #context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in context])
     context_text = context
-    #print(context_text)
     prompt = ChatPromptTemplate.from_messages(
         [
         (
