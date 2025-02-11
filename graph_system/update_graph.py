@@ -19,20 +19,17 @@ NEO4J_PASSWORD = os.environ["NEO4J_DB_PASSWORD"]
 graph = Neo4jGraph()
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 llm_transformer = LLMGraphTransformer(llm=llm)
+
 def update_graph(text):
-    #with open("example_prompt.txt", "r") as file:
-    #    text = file.read()
+    raw_documents = [Document(page_content=str(text))]
+    text_splitter = TokenTextSplitter(chunk_size=128, chunk_overlap=12)
+    documents = text_splitter.split_documents(raw_documents)
 
-
-    #text_splitter = TokenTextSplitter(chunk_size=512, chunk_overlap=24)
-    #documents = text_splitter.split_documents(text)
-    #print(documents)
-
-    print(type(text))
-    documents = [Document(text)]
-    print(documents[0].page_content)
+    print(documents)
+    print("Converting to graph documents")
     graph_documents = llm_transformer.convert_to_graph_documents(documents)
 
+    print("Adding to graph")
     graph.add_graph_documents(graph_documents, baseEntityLabel=True, include_source=True)
 
 
