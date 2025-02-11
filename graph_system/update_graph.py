@@ -28,8 +28,8 @@ def update_graph(text):
     #documents = text_splitter.split_documents(text)
     #print(documents)
 
-
-    documents = [Document(page_content=text)]
+    print(type(text))
+    documents = [Document(text)]
     print(documents[0].page_content)
     graph_documents = llm_transformer.convert_to_graph_documents(documents)
 
