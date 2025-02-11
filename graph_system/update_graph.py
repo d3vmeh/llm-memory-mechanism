@@ -22,7 +22,7 @@ llm_transformer = LLMGraphTransformer(llm=llm)
 
 def update_graph(text):
     raw_documents = [Document(page_content=str(text))]
-    text_splitter = TokenTextSplitter(chunk_size=128, chunk_overlap=12)
+    text_splitter = TokenTextSplitter(chunk_size=24, chunk_overlap=4)
     documents = text_splitter.split_documents(raw_documents)
 
     print(documents)

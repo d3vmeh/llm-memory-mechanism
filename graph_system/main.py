@@ -33,6 +33,7 @@ for message in st.session_state.messages:
 
 if query := st.chat_input("How can I help?"):
     st.session_state.messages.append({"role": "user", "content": query})
+    update_graph(query)
     with st.chat_message("user"):
         st.markdown(query)
     with st.chat_message("assistant"):
