@@ -42,7 +42,3 @@ def update_graph(text):
     )
     graph.query("CREATE FULLTEXT INDEX entity IF NOT EXISTS FOR (e:__Entity__) ON EACH [e.id]")
     graph._driver.close()
-
-
-def query_graph(query):
-    pass

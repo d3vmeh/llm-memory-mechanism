@@ -1,2 +1,3 @@
 __pycache__/
 graph_system/example_prompt.txt
+graph_system/conversation_history/
