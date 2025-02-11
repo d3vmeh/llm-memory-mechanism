@@ -41,4 +41,6 @@ if query := st.chat_input("How can I help?"):
         t, response = query_llm.get_response(query, llm)
         message_placeholder.markdown(response) 
     st.session_state.messages.append({"role": "assistant", "content": response})
+    update_graph(response)
+
 save_chat_history(st.session_state.messages)

@@ -31,7 +31,7 @@ def update_graph(text):
 
     print("Adding to graph")
     graph.add_graph_documents(graph_documents, baseEntityLabel=True, include_source=True)
-
+    
 
     vector_index = Neo4jVector.from_existing_graph(
         OpenAIEmbeddings(),
